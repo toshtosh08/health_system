@@ -21,3 +21,29 @@ A Flask-based web application for managing health programs and client data, feat
 - **Development**: PyCharm, Python 3.11
 
 ## Project Structure
+health_system/
+├── app.py                # Main Flask application
+├── tests/                # Unit tests
+│   └── test_routes.py
+├── templates/            # HTML templates
+│   ├── index.html
+│   ├── search_results.html
+│   └── client_profile.html
+├── static/               # CSS and static files
+│   └── style.css
+├── requirements.txt      # Python dependencies
+├── audit.log             # Audit logs 
+├── health_system.db      # SQLite database 
+└── README.md             # This file
+
+## Setup Instructions
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/toshtosh08/health-system.git
+   cd health-system
+   python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python app.py
+## run test
+python -m unittest discover tests
