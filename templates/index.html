@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Information System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Health Information System</h1>
+
+        <h2>Create Health Program</h2>
+        <form action="{{ url_for('create_program') }}" method="POST">
+            <input type="text" name="name" placeholder="Program Name" required>
+            <textarea name="description" placeholder="Description"></textarea>
+            <button type="submit">Create Program</button>
+        </form>
+
+        <h2>Register Client</h2>
+        <form action="{{ url_for('register_client') }}" method="POST">
+            <input type="text" name="name" placeholder="Client Name" required>
+            <input type="date" name="date_of_birth" required>
+            <select name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="text" name="contact_info" placeholder="Contact Info" required>
+            <button type="submit">Register Client</button>
+        </form>
+
+        <h2>Enroll Client</h2>
+        <form action="{{ url_for('enroll_client') }}" method="POST">
+            <input type="number" name="client_id" placeholder="Client ID" required>
+            <select name="program_id" required>
+                {% for program in programs %}
+                    <option value="{{ program.id }}">{{ program.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Enroll</button>
+        </form>
+
+        <h2>Search Client</h2>
+        <input type="text" id="search" placeholder="Search by name" oninput="searchClients()">
+        <div id="search-results"></div>
+    </div>
+</body>
+</html>

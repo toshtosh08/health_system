@@ -1,0 +1,5 @@
+{% for client in clients %}
+    <div class="client-result">
+        <a href="{{ url_for('client_profile', client_id=client.id) }}">{{ client.name }}</a>
+    </div>
+{% endfor %}
